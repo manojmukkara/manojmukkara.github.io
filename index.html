@@ -64,6 +64,24 @@ section{padding:96px 0}
 .status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:.8rem;font-weight:500;width:max-content}
 .status i{width:8px;height:8px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px rgba(10,10,10,.08);animation:pulse 2.4s ease-in-out infinite}
 @keyframes pulse{50%{box-shadow:0 0 0 7px rgba(10,10,10,0)}}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.status.ex{gap:0;background:var(--ink);color:var(--paper);border-color:var(--ink);padding-left:14px;letter-spacing:.01em}
+.status.ex b{font-weight:700}
+
+/* Capgemini band */
+.worked{display:grid;grid-template-columns:1.25fr .75fr;gap:20px;margin-top:20px}
+.cg{background:var(--ink);color:var(--paper);border-radius:28px;padding:clamp(24px,3.4vh,34px) clamp(26px,3vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:18px;overflow:hidden}
+.cg .lbl{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#8f8f8f}
+.cg b{display:block;font-weight:700;font-size:clamp(3rem,6.2vw,5.6rem);letter-spacing:-.055em;line-height:.9;translate:calc(var(--px,0) * 14px) calc(var(--py,0) * 14px);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
+.cg .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px;font-size:.88rem;color:#c4c4c4;padding-top:16px;border-top:1px solid #262626}
+.cg .row strong{color:var(--paper);font-weight:600}
+.others{background:var(--soft);border-radius:28px;padding:clamp(22px,3.2vh,30px) clamp(24px,2.6vw,32px);display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+.others .lbl{font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--grey)}
+.others ul{list-style:none}
+.others li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--soft2);font-weight:600;font-size:1.05rem;letter-spacing:-.01em;transition:padding .35s cubic-bezier(.2,.7,.2,1)}
+.others li:last-child{border-bottom:0}
+.others li span{font-weight:400;font-size:.8rem;color:var(--grey);white-space:nowrap}
+.others li:hover{padding-left:8px}
 .hero h1{font-weight:600;font-size:clamp(2rem,min(4.3vw,7.6vh),4.2rem);line-height:1.02;letter-spacing:-.045em;margin:clamp(14px,3vh,30px) 0 clamp(12px,2.4vh,22px)}
 .hero h1 em{font-size:1.1em}
 .hero .lead{max-width:520px;color:#3d3d3d;font-size:clamp(.9rem,1.9vh,1.02rem)}
@@ -236,7 +254,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
 
 @media (max-width:1040px){
   .links{display:none}
-  .hero-grid,.case,.faq-wrap,.kit{grid-template-columns:1fr}
+  .hero-grid,.case,.faq-wrap,.kit,.worked{grid-template-columns:1fr}
   .hero-grid{min-height:0}
   .hero-main{padding:40px}
   .hero h1{font-size:clamp(2.2rem,6.4vw,3.6rem)}
@@ -285,9 +303,9 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
   <div class="hero-grid">
     <div class="hero-main rv">
       <div>
-        <span class="status"><i></i>Available for new projects</span>
+        <div class="pills"><span class="status"><i></i>Available for new projects</span><span class="status ex">Ex-<b>Capgemini</b></span></div>
         <h1>Making brands the <em>answer</em> on Google and AI.</h1>
-        <p class="lead">I'm Manoj, an SEO, AEO &amp; GEO strategist. For five years I've helped businesses in the US, UK and India grow organic traffic, win featured snippets and get cited by ChatGPT, Gemini, Perplexity and Claude.</p>
+        <p class="lead">I'm Manoj, an SEO, AEO &amp; GEO strategist and former Knowledge Manager at <strong>Capgemini</strong>. For five years I've helped businesses in the US, UK and India grow organic traffic, win featured snippets and get cited by ChatGPT, Gemini, Perplexity and Claude.</p>
         <div class="ctas"><a class="btn" href="#contact">Start a project <span class="arr">↗</span></a><a class="btn light" href="#work">View case studies</a></div>
       </div>
       <div class="meta">
@@ -300,6 +318,10 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
       <img src="ChatGPT%20Image%20Jun%2021%202026%2011_03_12%20AM.png" alt="Portrait of Manoj Kumar Mukkara" width="1448" height="1086" fetchpriority="high">
       <div class="card"><div><b>Manoj Kumar Mukkara</b><span>SEO · AEO · GEO Strategist</span></div><a href="https://www.linkedin.com/in/manoj-kumar-mukkara-4b4a78336" target="_blank" rel="noopener" aria-label="LinkedIn profile">in</a></div>
     </div>
+  </div>
+  <div class="worked">
+    <a class="cg rv" href="#experience" data-tilt="4"><span class="lbl">Worked at</span><b>Capgemini</b><span class="row"><span><strong>Analyst, Knowledge Manager</strong> · Bengaluru</span><span>Nov 2022 — Dec 2025 · 3 years</span></span></a>
+    <div class="others rv" data-tilt="5"><span class="lbl">Also worked with</span><ul><li>Vellore Institute of Technology<span>Education</span></li><li>Rank AI Digital<span>Agency</span></li><li>Fiverr clients<span>US · UK</span></li></ul></div>
   </div>
 </div>
 <div class="marquee" aria-hidden="true"><div class="track">
