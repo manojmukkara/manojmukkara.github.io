@@ -48,12 +48,13 @@ section{padding:120px 0}
 .links{display:flex;gap:4px}
 .links a{padding:8px 14px;border-radius:999px;font-size:.84rem;font-weight:500;color:#444;transition:background .2s,color .2s}
 .links a:hover{background:var(--soft);color:var(--ink)}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:.86rem;font-weight:600;border:1px solid var(--ink);transition:transform .25s,background .25s,color .25s}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;background:var(--ink);color:var(--paper);font-size:.86rem;font-weight:600;border:1px solid var(--ink);translate:var(--tx,0px) var(--ty,0px);transition:transform .25s,translate .35s cubic-bezier(.2,.7,.2,1),background .25s,color .25s}
 .btn:hover{transform:translateY(-1px)}
 .btn.light{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn.light:hover{border-color:var(--ink)}
 .btn.inv{background:var(--paper);color:var(--ink);border-color:var(--paper)}
-.btn .arr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--paper);color:var(--ink);font-size:.8rem}
+.btn .arr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--paper);color:var(--ink);font-size:.8rem;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+.btn:hover .arr{transform:rotate(45deg)}
 .btn.inv .arr{background:var(--ink);color:var(--paper)}
 
 /* hero */
@@ -71,12 +72,14 @@ section{padding:120px 0}
 .meta small{display:block;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grey)}
 .meta b{display:block;font-weight:600;font-size:.98rem;margin-top:4px}
 .hero-photo{position:relative;border-radius:32px;overflow:hidden;background:var(--soft2);min-height:600px}
-.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:44% 24%;filter:grayscale(1) contrast(1.06);transform:scaleX(-1);transition:filter .9s ease,transform 1.4s ease}
-.hero-photo:hover img{filter:grayscale(0);transform:scaleX(-1) scale(1.025)}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:44% 24%;filter:grayscale(1) contrast(1.06);transform:scaleX(-1) scale(1.04);translate:calc(var(--px,0) * -18px) calc(var(--py,0) * -18px);transition:filter .9s ease,transform 1.4s ease,translate .5s cubic-bezier(.2,.7,.2,1)}
+.hero-photo:hover img{filter:grayscale(0);transform:scaleX(-1) scale(1.08)}
+.hero-photo .card{translate:calc(var(--px,0) * 10px) calc(var(--py,0) * 10px);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
 .hero-photo .card{position:absolute;left:16px;right:16px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 .hero-photo .card b{display:block;font-size:.95rem}
 .hero-photo .card span{font-size:.8rem;color:var(--grey)}
-.hero-photo .card a{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:1rem;flex:none}
+.hero-photo .card a{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:1rem;flex:none;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.hero-photo .card a:hover{transform:rotateY(180deg) scale(1.08)}
 
 /* marquee */
 .marquee{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:64px;padding:22px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
@@ -84,11 +87,14 @@ section{padding:120px 0}
 .track span{display:flex;align-items:center;gap:40px;padding-right:40px;font-weight:500;font-size:1.25rem;letter-spacing:-.01em;white-space:nowrap;color:#2a2a2a}
 .track span:after{content:"✦";font-size:.8rem;color:#b5b5b5}
 @keyframes scroll{to{transform:translateX(-50%)}}
+.marquee:hover .track{animation-play-state:paused}
+.track span{transition:color .3s}
+.track span:hover{color:#9a9a9a}
 
 /* bento */
 .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(200px,auto);gap:16px}
 .tile{border-radius:var(--r);background:var(--soft);padding:28px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
-.tile .k{font-weight:300;font-size:clamp(2.6rem,4.4vw,3.8rem);letter-spacing:-.05em;line-height:1}
+.tile .k{font-weight:300;font-size:clamp(2.6rem,4.4vw,3.8rem);letter-spacing:-.05em;line-height:1;translate:calc(var(--px,0) * 10px) calc(var(--py,0) * 10px);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
 .tile p{font-size:.92rem;color:#4a4a4a;max-width:300px}
 .tile small{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--grey)}
 .tile.dark{background:var(--ink);color:var(--paper)}
@@ -96,7 +102,9 @@ section{padding:120px 0}
 .tile.outline{background:var(--paper);border:1px solid var(--line)}
 .t-wide{grid-column:span 2}.t-tall{grid-row:span 2}
 .bar{display:flex;align-items:flex-end;gap:10px;height:120px;margin:22px 0}
-.bar div{flex:1;border-radius:10px;background:var(--soft2)}
+.bar div{flex:1;border-radius:10px;background:var(--soft2);transform-origin:bottom;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.tile:hover .bar div{transform:scaleY(1.12)}
+.tile:hover .bar div:nth-child(2){transition-delay:.04s}.tile:hover .bar div:nth-child(3){transition-delay:.08s}.tile:hover .bar div:nth-child(4){transition-delay:.12s}.tile:hover .bar div:nth-child(5){transition-delay:.16s}.tile:hover .bar div:nth-child(6){transition-delay:.2s}
 .bar div.on{background:var(--ink)}
 .tile.dark .bar div{background:#2a2a2a}
 .tile.dark .bar div.on{background:#fff}
@@ -108,7 +116,7 @@ section{padding:120px 0}
 
 /* services */
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.svc{border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:background .3s,color .3s,border-color .3s}
+.svc{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:background .3s,color .3s,border-color .3s}
 .svc:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .svc:hover p,.svc:hover li{color:#c4c4c4}
 .svc:hover .no{color:#7a7a7a}
@@ -118,7 +126,9 @@ section{padding:120px 0}
 .svc ul{list-style:none;margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}
 .svc:hover ul{border-color:#2c2c2c}
 .svc li{font-size:.86rem;color:#4a4a4a;padding:4px 0 4px 18px;position:relative;transition:color .3s}
-.svc li:before{content:"→";position:absolute;left:0;font-size:.8rem}
+.svc li:before{content:"→";position:absolute;left:0;font-size:.8rem;transition:translate .3s}
+.svc:hover li:before{translate:3px 0}
+.svc h3{translate:calc(var(--px,0) * 6px) calc(var(--py,0) * 6px);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
 
 /* case studies */
 .cases{display:grid;gap:16px}
@@ -130,6 +140,12 @@ section{padding:120px 0}
 .case-cover.l .tags span{border-color:#d4d4d1}
 .case-cover h3{font-weight:600;font-size:clamp(1.6rem,2.8vw,2.3rem);letter-spacing:-.035em;line-height:1.1;margin-top:36px}
 .case-cover .big{font-weight:300;font-size:clamp(3.4rem,6vw,5.4rem);letter-spacing:-.06em;line-height:.9}
+.case-cover h3,.case-cover .big{translate:calc(var(--px,0) * 14px) calc(var(--py,0) * 14px);transition:translate .5s cubic-bezier(.2,.7,.2,1)}
+.case-cover .tags span{transition:background .3s,color .3s}
+.case-cover:hover .tags span{background:rgba(255,255,255,.12)}
+.case-cover.l:hover .tags span{background:var(--paper)}
+.case-body{transition:border-color .3s}
+.case:hover .case-body{border-color:#c9c9c6}
 .case-cover .big small{display:block;font-size:.8rem;font-weight:500;letter-spacing:0;margin-top:12px;opacity:.7}
 .case-body{border-radius:var(--r);border:1px solid var(--line);padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .case-body h4{font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:10px}
@@ -143,13 +159,15 @@ section{padding:120px 0}
 /* process */
 .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
 .step{border-radius:var(--r);background:var(--soft);padding:28px;position:relative}
-.step .n{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--paper);border:1px solid var(--line);font-weight:600;font-size:.85rem}
+.step .n{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--paper);border:1px solid var(--line);font-weight:600;font-size:.85rem;transition:transform .8s cubic-bezier(.2,.7,.2,1),background .3s,color .3s,border-color .3s}
+.step:hover .n{transform:rotateY(360deg);background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .step h3{font-weight:600;font-size:1.15rem;letter-spacing:-.02em;margin:28px 0 10px}
 .step p{font-size:.9rem;color:#4a4a4a}
 
 /* experience */
 .exp{border-top:1px solid var(--ink)}
-.role{display:grid;grid-template-columns:240px 1fr 160px;gap:32px;padding:36px 0;border-bottom:1px solid var(--line)}
+.role{display:grid;grid-template-columns:240px 1fr 160px;gap:32px;padding:36px 0;border-bottom:1px solid var(--line);border-radius:0;transition:background .35s,padding .35s cubic-bezier(.2,.7,.2,1),border-radius .35s}
+.role:hover{background:var(--soft);padding-left:24px;padding-right:24px;border-radius:20px}
 .role .co{font-weight:600;font-size:1.1rem}
 .role .co small{display:block;font-weight:400;font-size:.85rem;color:var(--grey);margin-top:2px}
 .role h3{font-weight:600;font-size:1.25rem;letter-spacing:-.02em;margin-bottom:12px}
@@ -157,20 +175,22 @@ section{padding:120px 0}
 .role li{position:relative;padding-left:20px;margin:6px 0;font-size:.94rem;color:#3d3d3d}
 .role li:before{content:"";position:absolute;left:0;top:.8em;width:9px;height:1px;background:var(--ink)}
 .role .when{text-align:right;font-size:.85rem;color:var(--grey)}
-.role .when span{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--soft);color:var(--ink);font-weight:500;font-size:.78rem;white-space:nowrap}
+.role .when span{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--soft);color:var(--ink);font-weight:500;font-size:.78rem;white-space:nowrap;transition:background .3s,color .3s}
+.role:hover .when span{background:var(--ink);color:var(--paper)}
 
 /* toolkit */
 .kit{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
 .kit-box{border-radius:var(--r);border:1px solid var(--line);padding:32px}
 .kit-box h3{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--grey);margin-bottom:18px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips span{padding:9px 15px;border-radius:999px;background:var(--soft);font-size:.86rem;font-weight:500;transition:background .2s,color .2s}
-.chips span:hover{background:var(--ink);color:var(--paper)}
+.chips span{padding:9px 15px;border-radius:999px;background:var(--soft);font-size:.86rem;font-weight:500;cursor:default;transition:background .2s,color .2s,transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+.chips span:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px);box-shadow:0 10px 20px -10px rgba(0,0,0,.5)}
 .kit-box+.kit-box .chips span{background:var(--paper);border:1px solid var(--line)}
 .kit-row{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .cert{display:flex;flex-direction:column;gap:2px}
 .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
-.certs div{padding:16px 0;border-bottom:1px solid var(--line);font-size:.9rem;font-weight:500}
+.certs div{padding:16px 0;border-bottom:1px solid var(--line);font-size:.9rem;font-weight:500;transition:padding .35s cubic-bezier(.2,.7,.2,1)}
+.certs div:hover{padding-left:12px}
 .certs div small{display:block;font-weight:400;color:var(--grey);font-size:.78rem}
 
 /* faq */
@@ -180,12 +200,18 @@ details:first-of-type{border-top:1px solid var(--ink)}
 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;font-weight:600;font-size:1.08rem;letter-spacing:-.01em}
 summary::-webkit-details-marker{display:none}
 summary i{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);font-style:normal;font-weight:400;transition:transform .3s,background .3s,color .3s}
+details:not([open]) summary:hover i{transform:rotate(90deg);border-color:var(--ink)}
+summary{transition:padding .35s cubic-bezier(.2,.7,.2,1)}
+summary:hover{padding-left:8px}
 details[open] summary i{transform:rotate(45deg);background:var(--ink);color:var(--paper);border-color:var(--ink)}
 details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
 
 /* cta + footer */
 .cta{padding:0 0 32px}
 .cta-box{border-radius:36px;background:var(--ink);color:var(--paper);padding:96px 64px 40px;position:relative;overflow:hidden}
+.cta-box>*{position:relative}
+.cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(520px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.11),transparent 45%);opacity:0;transition:opacity .6s;pointer-events:none}
+.cta-box:hover::before{opacity:1}
 .cta-box .eyebrow{color:#9a9a9a}
 .cta-box h2{font-weight:600;font-size:clamp(2.6rem,7vw,6rem);line-height:.98;letter-spacing:-.05em;margin:22px 0 40px;max-width:980px}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -196,8 +222,17 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
 .foot a:hover{color:var(--paper)}
 
 /* motion */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
+.rv{opacity:0;translate:0 20px;transition:opacity .9s cubic-bezier(.2,.7,.2,1),translate .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;translate:0 0}
+
+/* 3D tilt */
+[data-tilt]{position:relative;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--lift,0px));transition:transform .7s cubic-bezier(.2,.7,.2,1),box-shadow .5s,opacity .9s cubic-bezier(.2,.7,.2,1),translate .9s cubic-bezier(.2,.7,.2,1),background .3s,color .3s,border-color .3s}
+[data-tilt].tilting{transition:transform .12s linear,box-shadow .5s,opacity .9s,translate .9s,background .3s,color .3s,border-color .3s}
+[data-tilt]::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.16),transparent 45%);opacity:0;transition:opacity .4s;z-index:2}
+@media (hover:hover) and (pointer:fine){
+  [data-tilt]:hover{--lift:-6px;box-shadow:0 34px 60px -28px rgba(0,0,0,.35)}
+  [data-tilt]:hover::after{opacity:1}
+}
 
 @media (max-width:1040px){
   .links{display:none}
@@ -233,7 +268,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
   details p{padding-right:0}
   .case-body .sp{display:none}
 }
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.track{animation:none}.status i{animation:none}html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){[data-tilt]{transform:none!important}.btn{translate:none!important}.rv{opacity:1;translate:none;transition:none}.track{animation:none}.status i{animation:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
@@ -259,7 +294,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
         <div><small>Experience</small><b>5+ years</b></div>
       </div>
     </div>
-    <div class="hero-photo rv">
+    <div class="hero-photo rv" data-tilt="6">
       <img src="ChatGPT%20Image%20Jun%2021%202026%2011_03_12%20AM.png" alt="Portrait of Manoj Kumar Mukkara" width="1448" height="1086" fetchpriority="high">
       <div class="card"><div><b>Manoj Kumar Mukkara</b><span>SEO · AEO · GEO Strategist</span></div><a href="https://www.linkedin.com/in/manoj-kumar-mukkara-4b4a78336" target="_blank" rel="noopener" aria-label="LinkedIn profile">in</a></div>
     </div>
@@ -274,31 +309,31 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
 <section id="results"><div class="wrap">
   <div class="sechead rv"><div><span class="eyebrow">Results</span><h2 class="title">Numbers from the work.</h2></div><p>Outcomes from freelance engagements, agency work and three years in enterprise knowledge management at Capgemini.</p></div>
   <div class="bento">
-    <div class="tile dark t-wide t-tall rv">
+    <div data-tilt="8" class="tile dark t-wide t-tall rv">
       <small>Organic growth</small>
       <div><div class="bar"><div style="height:38%"></div><div style="height:46%"></div><div style="height:52%"></div><div style="height:63%"></div><div style="height:74%"></div><div class="on" style="height:100%"></div></div>
       <div class="k">40–60%</div><p style="margin-top:12px">Organic traffic growth delivered for US and UK clients through keyword strategy, on-page optimization, backlink audits and snippet-focused long-form content.</p></div>
     </div>
-    <div class="tile rv"><small>Content audit</small><div><div class="k">+60%</div><p style="margin-top:10px">Traffic growth in three months after consolidating a client blog.</p></div></div>
-    <div class="tile outline rv"><small>Blog pruned</small><div><div class="from-to"><s>1,200</s><span class="k">70</span></div><p style="margin-top:10px">Posts cut down to the highest-value pages.</p></div></div>
-    <div class="tile outline rv"><small>Knowledge base</small><div><div class="k">550+</div><p style="margin-top:10px">KCS articles authored and restructured at Capgemini.</p></div></div>
-    <div class="tile rv"><small>Self-service</small><div><div class="k">50%</div><p style="margin-top:10px">Lift in self-service resolution, plus 30% in first-contact resolution.</p></div></div>
-    <div class="tile rv"><small>Research</small><div><div class="k">1,000+</div><p style="margin-top:10px">Keywords researched and mapped to search intent.</p></div></div>
-    <div class="tile outline rv"><small>Query mapping</small><div><div class="k">200+</div><p style="margin-top:10px">User queries mapped into virtual assistant workflows.</p></div></div>
-    <div class="tile dark t-wide rv"><small>Where I get brands seen</small><div><p style="max-width:none;color:#e9e9e9;font-size:1.05rem">Classic rankings plus the answer layer on top of them.</p><div class="engines"><span>AI Overviews</span><span>ChatGPT</span><span>Gemini</span><span>Perplexity</span><span>Claude</span></div></div></div>
-    <div class="tile outline t-full rv"><small>Multi-location</small><div><div class="k">4 campuses</div><p style="margin-top:10px;max-width:none">Google Business Profiles and review responses managed for Vellore Institute of Technology.</p></div></div>
+    <div data-tilt="8" class="tile rv"><small>Content audit</small><div><div class="k">+60%</div><p style="margin-top:10px">Traffic growth in three months after consolidating a client blog.</p></div></div>
+    <div data-tilt="8" class="tile outline rv"><small>Blog pruned</small><div><div class="from-to"><s>1,200</s><span class="k">70</span></div><p style="margin-top:10px">Posts cut down to the highest-value pages.</p></div></div>
+    <div data-tilt="8" class="tile outline rv"><small>Knowledge base</small><div><div class="k">550+</div><p style="margin-top:10px">KCS articles authored and restructured at Capgemini.</p></div></div>
+    <div data-tilt="8" class="tile rv"><small>Self-service</small><div><div class="k">50%</div><p style="margin-top:10px">Lift in self-service resolution, plus 30% in first-contact resolution.</p></div></div>
+    <div data-tilt="8" class="tile rv"><small>Research</small><div><div class="k">1,000+</div><p style="margin-top:10px">Keywords researched and mapped to search intent.</p></div></div>
+    <div data-tilt="8" class="tile outline rv"><small>Query mapping</small><div><div class="k">200+</div><p style="margin-top:10px">User queries mapped into virtual assistant workflows.</p></div></div>
+    <div data-tilt="8" class="tile dark t-wide rv"><small>Where I get brands seen</small><div><p style="max-width:none;color:#e9e9e9;font-size:1.05rem">Classic rankings plus the answer layer on top of them.</p><div class="engines"><span>AI Overviews</span><span>ChatGPT</span><span>Gemini</span><span>Perplexity</span><span>Claude</span></div></div></div>
+    <div data-tilt="8" class="tile outline t-full rv"><small>Multi-location</small><div><div class="k">4 campuses</div><p style="margin-top:10px;max-width:none">Google Business Profiles and review responses managed for Vellore Institute of Technology.</p></div></div>
   </div>
 </div></section>
 
 <section id="services" style="padding-top:0"><div class="wrap">
   <div class="sechead rv"><div><span class="eyebrow">Services</span><h2 class="title">What I can do <em>for you.</em></h2></div><p>Engagements can be a one-off audit or ongoing work, from technical fixes to content built for AI assistants to cite.</p></div>
   <div class="services">
-    <div class="svc rv"><span class="no">01</span><h3>SEO, AEO &amp; GEO audits</h3><p>A clear view of where you rank, where you're the answer, and where AI cites competitors instead.</p><ul><li>Priority page audits</li><li>LLM citation gap analysis</li><li>Prioritized action plan</li></ul></div>
-    <div class="svc rv"><span class="no">02</span><h3>Technical &amp; on-page SEO</h3><p>The foundations search engines and AI crawlers need to read, trust and rank your site.</p><ul><li>Crawl and indexing fixes</li><li>Schema markup</li><li>On-page optimization</li></ul></div>
-    <div class="svc rv"><span class="no">03</span><h3>AI search visibility (GEO)</h3><p>Make your brand easy for ChatGPT, Gemini, Perplexity and Claude to understand and reference.</p><ul><li>LLM readability improvements</li><li>llms.txt creation</li><li>Entity &amp; brand signals</li></ul></div>
-    <div class="svc rv"><span class="no">04</span><h3>Content strategy &amp; AEO</h3><p>Answer-first, schema-rich content that builds topical authority and wins snippets and AI Overviews.</p><ul><li>Topical authority maps</li><li>Content audits &amp; pruning</li><li>E-E-A-T driven writing</li></ul></div>
-    <div class="svc rv"><span class="no">05</span><h3>Local SEO</h3><p>Visibility for businesses and institutions with physical locations.</p><ul><li>Google Business Profiles</li><li>Review response management</li><li>Branded-query reclamation</li></ul></div>
-    <div class="svc rv"><span class="no">06</span><h3>Paid + organic growth</h3><p>Meta Ads campaigns run alongside organic search so both channels support each other.</p><ul><li>Meta Ads campaigns</li><li>Link-building strategy</li><li>GA4 &amp; Search Console reporting</li></ul></div>
+    <div class="svc rv" data-tilt="7"><span class="no">01</span><h3>SEO, AEO &amp; GEO audits</h3><p>A clear view of where you rank, where you're the answer, and where AI cites competitors instead.</p><ul><li>Priority page audits</li><li>LLM citation gap analysis</li><li>Prioritized action plan</li></ul></div>
+    <div class="svc rv" data-tilt="7"><span class="no">02</span><h3>Technical &amp; on-page SEO</h3><p>The foundations search engines and AI crawlers need to read, trust and rank your site.</p><ul><li>Crawl and indexing fixes</li><li>Schema markup</li><li>On-page optimization</li></ul></div>
+    <div class="svc rv" data-tilt="7"><span class="no">03</span><h3>AI search visibility (GEO)</h3><p>Make your brand easy for ChatGPT, Gemini, Perplexity and Claude to understand and reference.</p><ul><li>LLM readability improvements</li><li>llms.txt creation</li><li>Entity &amp; brand signals</li></ul></div>
+    <div class="svc rv" data-tilt="7"><span class="no">04</span><h3>Content strategy &amp; AEO</h3><p>Answer-first, schema-rich content that builds topical authority and wins snippets and AI Overviews.</p><ul><li>Topical authority maps</li><li>Content audits &amp; pruning</li><li>E-E-A-T driven writing</li></ul></div>
+    <div class="svc rv" data-tilt="7"><span class="no">05</span><h3>Local SEO</h3><p>Visibility for businesses and institutions with physical locations.</p><ul><li>Google Business Profiles</li><li>Review response management</li><li>Branded-query reclamation</li></ul></div>
+    <div class="svc rv" data-tilt="7"><span class="no">06</span><h3>Paid + organic growth</h3><p>Meta Ads campaigns run alongside organic search so both channels support each other.</p><ul><li>Meta Ads campaigns</li><li>Link-building strategy</li><li>GA4 &amp; Search Console reporting</li></ul></div>
   </div>
 </div></section>
 
@@ -306,7 +341,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
   <div class="sechead rv"><div><span class="eyebrow">Case studies</span><h2 class="title">Selected work.</h2></div><p>Four engagements across education, agency, enterprise and freelance clients.</p></div>
   <div class="cases">
     <article class="case rv">
-      <div class="case-cover"><div class="tags"><span>Education</span><span>SEO</span><span>AEO</span><span>GEO</span><span>Local</span></div><h3>Vellore Institute of Technology (VIT)</h3></div>
+      <div data-tilt="6" class="case-cover"><div class="tags"><span>Education</span><span>SEO</span><span>AEO</span><span>GEO</span><span>Local</span></div><h3>Vellore Institute of Technology (VIT)</h3></div>
       <div class="case-body">
         <div class="full"><h4>Scope</h4><p>A full search engagement for vit.ac.in, covering the main website, AI search visibility, and local profiles for four campuses.</p></div>
         <div><h4>What I did</h4><ul><li>Priority page audits</li><li>LLM readability improvements</li><li>llms.txt creation</li></ul></div>
@@ -314,7 +349,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
       </div>
     </article>
     <article class="case rv">
-      <div class="case-cover l"><div class="tags"><span>Freelance client</span><span>Content audit</span></div><div><div class="big">+60%<small>organic traffic in three months</small></div></div></div>
+      <div data-tilt="6" class="case-cover l"><div class="tags"><span>Freelance client</span><span>Content audit</span></div><div><div class="big">+60%<small>organic traffic in three months</small></div></div></div>
       <div class="case-body">
         <div class="full"><h4>Content audit &amp; traffic recovery</h4><p>A blog with 1,200 posts was spreading authority across too many thin, overlapping pages.</p></div>
         <div><h4>What I did</h4><ul><li>Audited all 1,200 posts</li><li>Pruned and consolidated to the 70 highest-value pages</li></ul></div>
@@ -322,7 +357,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
       </div>
     </article>
     <article class="case rv">
-      <div class="case-cover"><div class="tags"><span>Enterprise</span><span>Capgemini</span><span>Knowledge management</span></div><div><div class="big">550+<small>knowledge articles restructured</small></div></div></div>
+      <div data-tilt="6" class="case-cover"><div class="tags"><span>Enterprise</span><span>Capgemini</span><span>Knowledge management</span></div><div><div class="big">550+<small>knowledge articles restructured</small></div></div></div>
       <div class="case-body">
         <div class="full"><h4>Enterprise knowledge base optimization</h4><p>Making internal knowledge easy to find and easy for virtual assistants to extract answers from.</p></div>
         <div><h4>What I did</h4><ul><li>Search intent mapping and content taxonomy</li><li>Information architecture for 550+ KCS articles</li><li>Mapped 200+ user queries into assistant workflows</li></ul></div>
@@ -330,7 +365,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
       </div>
     </article>
     <article class="case rv">
-      <div class="case-cover l"><div class="tags"><span>Agency</span><span>Content</span><span>SEO</span></div><h3>Rank AI Digital</h3></div>
+      <div data-tilt="6" class="case-cover l"><div class="tags"><span>Agency</span><span>Content</span><span>SEO</span></div><h3>Rank AI Digital</h3></div>
       <div class="case-body">
         <div class="full"><h4>Web content, blogs &amp; SEO</h4><p>Website and blog content for rankaidigital.com, written to perform in both search engines and AI answer engines.</p></div>
         <div><h4>What I did</h4><ul><li>Website copywriting</li><li>Blog content</li></ul></div>
@@ -343,10 +378,10 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
 <section id="process" style="padding-top:0"><div class="wrap">
   <div class="sechead rv"><div><span class="eyebrow">Process</span><h2 class="title">How we'll work together.</h2></div><p>A simple, transparent process, whether it's a single audit or an ongoing engagement.</p></div>
   <div class="process">
-    <div class="step rv"><span class="n">01</span><h3>Audit</h3><p>Technical, on-page and content review, plus an LLM citation gap analysis to see where AI assistants mention competitors instead of you.</p></div>
-    <div class="step rv"><span class="n">02</span><h3>Strategy</h3><p>Keyword and intent research, topical authority mapping and entity planning, turned into a prioritized roadmap.</p></div>
-    <div class="step rv"><span class="n">03</span><h3>Build</h3><p>Technical fixes, schema markup, and answer-first content written to rank, win snippets and get cited.</p></div>
-    <div class="step rv"><span class="n">04</span><h3>Measure</h3><p>Tracking in Search Console and GA4 alongside AI visibility checks, then refining what works.</p></div>
+    <div class="step rv" data-tilt="9"><span class="n">01</span><h3>Audit</h3><p>Technical, on-page and content review, plus an LLM citation gap analysis to see where AI assistants mention competitors instead of you.</p></div>
+    <div class="step rv" data-tilt="9"><span class="n">02</span><h3>Strategy</h3><p>Keyword and intent research, topical authority mapping and entity planning, turned into a prioritized roadmap.</p></div>
+    <div class="step rv" data-tilt="9"><span class="n">03</span><h3>Build</h3><p>Technical fixes, schema markup, and answer-first content written to rank, win snippets and get cited.</p></div>
+    <div class="step rv" data-tilt="9"><span class="n">04</span><h3>Measure</h3><p>Tracking in Search Console and GA4 alongside AI visibility checks, then refining what works.</p></div>
   </div>
 </div></section>
 
@@ -382,7 +417,7 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
 </div></section>
 
 <section class="cta" id="contact"><div class="wrap">
-  <div class="cta-box rv">
+  <div class="cta-box rv" data-spot>
     <span class="eyebrow">Contact</span>
     <h2>Let's make your brand the <em>answer.</em></h2>
     <div class="cta-row"><a class="btn inv" href="mailto:manojkmukkara@gmail.com">Email me <span class="arr">↗</span></a><a class="btn light" style="color:#fff;border-color:#333" href="https://www.linkedin.com/in/manoj-kumar-mukkara-4b4a78336" target="_blank" rel="noopener">LinkedIn</a><a class="mail" href="mailto:manojkmukkara@gmail.com">manojkmukkara@gmail.com</a></div>
@@ -393,6 +428,23 @@ details p{padding:0 50px 26px 0;color:#454545;font-size:.95rem}
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.08});document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});}else{document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});}
+(function(){
+var mm=window.matchMedia;if(!mm||!mm('(hover:hover) and (pointer:fine)').matches||mm('(prefers-reduced-motion: reduce)').matches)return;
+function pos(el,e){var r=el.getBoundingClientRect();return [(e.clientX-r.left)/r.width-.5,(e.clientY-r.top)/r.height-.5,e.clientX-r.left,e.clientY-r.top];}
+document.querySelectorAll('[data-tilt]').forEach(function(el){
+  var max=parseFloat(el.getAttribute('data-tilt'))||6;
+  el.addEventListener('pointermove',function(e){var p=pos(el,e),s=el.style;el.classList.add('tilting');
+    s.setProperty('--rx',(-p[1]*max).toFixed(2)+'deg');s.setProperty('--ry',(p[0]*max).toFixed(2)+'deg');
+    s.setProperty('--px',p[0].toFixed(3));s.setProperty('--py',p[1].toFixed(3));
+    s.setProperty('--mx',p[2].toFixed(0)+'px');s.setProperty('--my',p[3].toFixed(0)+'px');});
+  el.addEventListener('pointerleave',function(){el.classList.remove('tilting');['--rx','--ry','--px','--py'].forEach(function(k){el.style.removeProperty(k)});});
+});
+document.querySelectorAll('.btn').forEach(function(b){
+  b.addEventListener('pointermove',function(e){var p=pos(b,e);b.style.setProperty('--tx',(p[0]*b.offsetWidth*.22).toFixed(1)+'px');b.style.setProperty('--ty',(p[1]*b.offsetHeight*.4).toFixed(1)+'px');});
+  b.addEventListener('pointerleave',function(){b.style.removeProperty('--tx');b.style.removeProperty('--ty');});
+});
+document.querySelectorAll('[data-spot]').forEach(function(el){el.addEventListener('pointermove',function(e){var p=pos(el,e);el.style.setProperty('--mx',p[2].toFixed(0)+'px');el.style.setProperty('--my',p[3].toFixed(0)+'px');});});
+})();
 </script>
 </body>
 </html>
